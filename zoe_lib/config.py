@@ -120,6 +120,10 @@ def load_configuration(test_conf=None):
         argparser.add_argument('--kube-config-file', help='Kubernetes configuration file', default='/opt/zoe/kube.conf')
         argparser.add_argument('--kube-namespace', help='The namespace that Zoe operates on', default='default')
 
+	# Kubernetes Ingress Controller (NGINX)
+        argparser.add_argument('--kube-ingress-controller', help='Kubernetes Ingress controller is used. Impacts the endpoint handling in Zoe', default='no')
+        argparser.add_argument('--kube-ingress-url-suffix', help='URL suffix, for subdomain based ingress reverse proxy routing. Impacts endpoint URL creation', default='platform.atosdigital.nl')
+
         # other options
         argparser.add_argument('--zapp-shop-path', help='Path where ZApp folders are stored', default='/var/lib/zoe-apps')
         argparser.add_argument('--log-file', help='output logs to a file', default='stderr')
