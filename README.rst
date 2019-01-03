@@ -1,33 +1,18 @@
-Zoe Analytics - Container-based Analytics as a Service
+Atos customized version of the Zoe Analytics platform (Container-based Analytics as a Service)
 ======================================================
 
-Zoe Analytics provides a simple way to provision any kind of data analytics applications.
-
-This repository is used for day-to-day, open source development, feel free to fork and contribute.
-
-Resources:
-
-- Website: http://zoe-analytics.eu
-- Documentation: http://docs.zoe-analytics.eu
-- Roadmap: https://github.com/DistributedSystemsGroup/zoe/wiki/RoadMap
-- Mailing list: http://www.freelists.org/list/zoe
-- Issue tracker: https://github.com/DistributedSystemsGroup/zoe/issues
-- Main repo: https://gitlab.eurecom.fr/zoe/main (GitHub is a read-only mirror)
-
-Zoe applications (ZApps):
-
-- Check the repositories at: https://gitlab.eurecom.fr/zoe-apps/
+Zoe Analytics provides a simple way to provision any kind of data analytics applications. The Atos customized version is 
+able to run on a Google Kubernetes Engine (GKE) backend with Ingress / Reverse proxy features and supports the Atos Codex analytics components as ZApps.
 
 Zoe is licensed under the terms of the Apache 2.0 license.
 
-Research papers
----------------
 
-If you are interested in learning more about Zoe and the underling scheduling theory, we published a paper with an experimental evaluation that show the advantages of our techniques.
+References
+------------------------------------------------------
 
-The paper can be found on open access `at ArXiv <https://arxiv.org/abs/1611.09528>`_.
+This customized version is a fork and is based on the Zoe Analytics platform (zoe-analytics.eu)
 
-If you use Zoe Analytics for running your experiments, please do not forget to cite us::
+Feel free to read the paper of the original developers: `at ArXiv <https://arxiv.org/abs/1611.09528>`_.
 
     @inproceedings{Pace:2017:FSD:3101112.3101126,
       author = {Pace, Francesco and Venzano, Daniele and Carra, Damiano and Michiardi, Pietro},
@@ -45,4 +30,3 @@ If you use Zoe Analytics for running your experiments, please do not forget to c
      publisher = {IEEE Press},
      address = {Piscataway, NJ, USA},
     }
-
