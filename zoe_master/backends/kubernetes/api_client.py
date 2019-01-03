@@ -19,6 +19,8 @@ from argparse import Namespace
 import socket
 from typing import Dict, Any, List
 
+import re
+
 import humanfriendly
 import pykube
 
@@ -48,6 +50,7 @@ class KubernetesServiceConf:
                 'namespace': get_conf().kube_namespace
             },
             'spec': {
+		'type': 'NodePort',
                 'selector': {},
                 'ports': []
             },
@@ -411,7 +414,7 @@ class KubernetesClient:
         # Get basic information from nodes
         for node in node_list:
             nss = NodeStats(node.name)
-            nss.cores_total = float(node.obj['status']['allocatable']['cpu'])
+            nss.cores_total = float(node.obj['status']['allocatable']['cpu'][1]) ## Bug found on GKE
             nss.memory_total = humanfriendly.parse_size(node.obj['status']['allocatable']['memory'])
             nss.labels = node.obj['metadata']['labels']
             nss.status = 'online'
