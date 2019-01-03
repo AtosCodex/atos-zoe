@@ -147,6 +147,11 @@ class Service(BaseRecord):
             self.work_dir = None
 
         try:
+            self.load_balancer = self.description['loadBalancer']
+        except KeyError:
+            self.load_balancer = None
+
+        try:
             self.labels = self.description['labels']
         except KeyError:
             self.labels = []

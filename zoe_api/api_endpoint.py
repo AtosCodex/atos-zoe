@@ -218,8 +218,8 @@ class APIEndpoint:
                         endpoint = port.url_template.format(**{"ip_port": port.external_ip + ":" + str(port.external_port), "proxy_path": endpoint_ext})
                     endpoints.append((port.readable_name, endpoint, endpoint_ext))
                 if get_conf().kube_ingress_controller.upper()  == 'YES' and port.enable_proxy:
-                    endpoint = port.url_template.format(**{"ip_port": str(service.name) + "-"  + str(execution.id) + "-" + get_conf().deployment_name + get_conf().kube_ingress_url_suffix})
-                    endpoint_ext = port.url_template.format(**{"ip_port": str(service.name) + "-"  + str(execution.id) + "-" + get_conf().deployment_name + get_conf().kube_ingress_url_suffix}) 
+                    endpoint = port.url_template.format(**{"ip_port": str(service.name) + "-"  + str(execution.id) + "-" + get_conf().deployment_name + get_conf().kube_ingress_url_suffix, "proxy_path": ""})
+                    endpoint_ext = port.url_template.format(**{"ip_port": str(service.name) + "-"  + str(execution.id) + "-" + get_conf().deployment_name + get_conf().kube_ingress_url_suffix, "proxy_path": ""}) 
                     endpoints.append((port.readable_name, endpoint, endpoint_ext))
 
         return services_info, endpoints

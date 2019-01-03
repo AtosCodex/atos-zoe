@@ -43,6 +43,9 @@
         "monitor": {
           "type": "boolean"
         },
+        "loadBalancer": {
+          "type": "boolean"
+        },
         "startup_order": {
           "type": "number",
           "multipleOf": 1.0

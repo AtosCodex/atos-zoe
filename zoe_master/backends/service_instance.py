@@ -72,6 +72,8 @@ class ServiceInstance:
 
         self.image_name = service.image_name
 
+        self.load_balancer = service.load_balancer
+
         self.ports = []
         for port in service.ports:
             self.ports.append(BackendPort(port.internal_number, port.protocol))

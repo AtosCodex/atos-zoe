@@ -35,7 +35,7 @@ log = logging.getLogger(__name__)
 ZOE_LABELS = {
     "app": "zoe",
     "version": ZOE_VERSION,
-    "auto-ingress/enabled": "enabled"
+    "auto-ingress/enabled": "enabled",
 }
 
 
@@ -64,6 +64,10 @@ class KubernetesServiceConf:
         """Setter to set label"""
         for key in lbs:
             self.conf['metadata']['labels'][key] = lbs[key]
+
+    def set_type(self,type):
+        """Setter to override the service type"""
+        self.conf['spec']['type'] = type
 
     def set_ports(self, ports):
         """Setter to set ports"""
@@ -336,6 +340,11 @@ class KubernetesClient:
 
         if len(service_instance.ports) > 0:
             config.set_ports(service_instance.ports)
+
+        """Handling for having a GCP LoadBalancer based exposure instead of the default nodeport/ingress"""
+        if service_instance.load_balancer == True:
+            config.set_labels({'auto-ingress/enabled': 'disabled'})
+            config.set_type('LoadBalancer')
 
         config.set_selectors(ZOE_LABELS)
         config.set_selectors({'service_name': service_instance.name})
